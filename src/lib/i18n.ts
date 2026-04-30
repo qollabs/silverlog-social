@@ -1,0 +1,146 @@
+export type Locale = 'ko' | 'en';
+
+export const ui = {
+  ko: {
+    // Nav
+    nav_events: '행사',
+    nav_my_schedule: '내 일정',
+    nav_neighbors: '이웃',
+    nav_my_info: '내 정보',
+    // Login
+    login_title: '실버로그',
+    login_subtitle: '우리 단지 이웃과\n함께하는 즐거운 만남',
+    login_name_label: '성함',
+    login_name_placeholder: '홍길동',
+    login_phone_label: '휴대폰 번호',
+    login_phone_hint: '인증번호를 문자로 보내드립니다.',
+    login_request_otp: '인증번호 받기',
+    login_requesting: '전송 중...',
+    login_otp_label: '인증번호 6자리',
+    login_verify: '확인',
+    login_verifying: '확인 중...',
+    login_back: '번호 다시 입력',
+    login_otp_expired: '인증번호가 만료되었습니다. 다시 요청해 주세요.',
+    login_footer: `© ${new Date().getFullYear()} QoL LABS`,
+    // Onboarding
+    onb_welcome_title: '환영합니다!',
+    onb_welcome_body: '관심사를 알려주시면\n취향이 맞는 이웃과\n행사를 추천해 드립니다.',
+    onb_welcome_hint: '(3가지 간단한 질문, 1분 정도 걸려요)',
+    onb_start: '시작하기',
+    onb_interests_title: '어떤 활동을 좋아하세요?',
+    onb_interests_hint: '관심 있는 항목을 모두 선택해 주세요.',
+    onb_allergies_title: '알레르기가 있으세요?',
+    onb_allergies_hint: '음식 행사에서 안전하게 모실 수 있도록 알려 주세요.',
+    onb_time_title: '언제 활동하기 좋으세요?',
+    onb_time_hint: '선호하시는 시간대를 모두 선택해 주세요.',
+    onb_skip: '건너뛰기',
+    onb_next: '다음',
+    onb_finish: '완료',
+    onb_saving: '저장 중...',
+    onb_done_title: '준비가 되었습니다!',
+    onb_done_hint: '잠시만 기다려 주세요...',
+  },
+  en: {
+    // Nav
+    nav_events: 'Events',
+    nav_my_schedule: 'My Schedule',
+    nav_neighbors: 'Neighbors',
+    nav_my_info: 'My Info',
+    // Login
+    login_title: 'SilverLog',
+    login_subtitle: 'Connect with neighbors\nin your community',
+    login_name_label: 'Name',
+    login_name_placeholder: 'Full Name',
+    login_phone_label: 'Phone Number',
+    login_phone_hint: "We'll send a verification code by text.",
+    login_request_otp: 'Send Code',
+    login_requesting: 'Sending...',
+    login_otp_label: '6-digit Code',
+    login_verify: 'Verify',
+    login_verifying: 'Verifying...',
+    login_back: 'Change Number',
+    login_otp_expired: 'Code expired. Please request a new one.',
+    login_footer: `© ${new Date().getFullYear()} QoL LABS`,
+    // Onboarding
+    onb_welcome_title: 'Welcome!',
+    onb_welcome_body: "Tell us your interests and we'll\nrecommend neighbors and\nevents you'll enjoy.",
+    onb_welcome_hint: '(3 quick questions, about 1 minute)',
+    onb_start: 'Get Started',
+    onb_interests_title: 'What activities do you enjoy?',
+    onb_interests_hint: 'Select all that apply.',
+    onb_allergies_title: 'Any food allergies?',
+    onb_allergies_hint: 'This helps us keep you safe at food events.',
+    onb_time_title: 'When do you prefer to be active?',
+    onb_time_hint: 'Select all that apply.',
+    onb_skip: 'Skip',
+    onb_next: 'Next',
+    onb_finish: 'Done',
+    onb_saving: 'Saving...',
+    onb_done_title: "You're all set!",
+    onb_done_hint: 'Just a moment...',
+  },
+} as const;
+
+export type UiKey = keyof typeof ui['ko'];
+
+// Canonical labels are stored in Korean for AI matching consistency.
+// These maps translate Korean labels to English for display only.
+export const interestCategoryLabels: Record<string, Record<Locale, string>> = {
+  '운동·신체활동': { ko: '운동·신체활동', en: 'Exercise & Fitness' },
+  '취미·여가':     { ko: '취미·여가',     en: 'Hobbies & Leisure' },
+  '종교':          { ko: '종교',          en: 'Religion' },
+  '음식·미식':     { ko: '음식·미식',     en: 'Food & Culinary' },
+  '모임 성향':     { ko: '모임 성향',     en: 'Social Style' },
+};
+
+export const interestItemLabels: Record<string, Record<Locale, string>> = {
+  '요가':       { ko: '요가',       en: 'Yoga' },
+  '체조':       { ko: '체조',       en: 'Aerobics' },
+  '산책':       { ko: '산책',       en: 'Walking' },
+  '등산':       { ko: '등산',       en: 'Hiking' },
+  '게이트볼':   { ko: '게이트볼',   en: 'Gateball' },
+  '탁구':       { ko: '탁구',       en: 'Table Tennis' },
+  '수영':       { ko: '수영',       en: 'Swimming' },
+  '골프':       { ko: '골프',       en: 'Golf' },
+  '걷기':       { ko: '걷기',       en: 'Walking' },
+  '바둑':       { ko: '바둑',       en: 'Baduk / Go' },
+  '장기':       { ko: '장기',       en: 'Korean Chess' },
+  '서예':       { ko: '서예',       en: 'Calligraphy' },
+  '그림':       { ko: '그림',       en: 'Drawing' },
+  '독서':       { ko: '독서',       en: 'Reading' },
+  '음악감상':   { ko: '음악감상',   en: 'Music' },
+  '노래':       { ko: '노래',       en: 'Singing' },
+  '댄스':       { ko: '댄스',       en: 'Dance' },
+  '사진':       { ko: '사진',       en: 'Photography' },
+  '기독교':     { ko: '기독교',     en: 'Christianity' },
+  '천주교':     { ko: '천주교',     en: 'Catholicism' },
+  '불교':       { ko: '불교',       en: 'Buddhism' },
+  '원불교':     { ko: '원불교',     en: 'Won Buddhism' },
+  '없음':       { ko: '없음',       en: 'None' },
+  '전통차':     { ko: '전통차',     en: 'Traditional Tea' },
+  '한식':       { ko: '한식',       en: 'Korean Cuisine' },
+  '커피':       { ko: '커피',       en: 'Coffee' },
+  '베이킹':     { ko: '베이킹',     en: 'Baking' },
+  '반찬만들기': { ko: '반찬만들기', en: 'Side Dishes' },
+  '소규모 모임': { ko: '소규모 모임', en: 'Small Groups' },
+  '대화 위주':  { ko: '대화 위주',  en: 'Conversation-focused' },
+  '활동 위주':  { ko: '활동 위주',  en: 'Activity-focused' },
+  '봉사활동':   { ko: '봉사활동',   en: 'Volunteering' },
+};
+
+export const allergyLabels: Record<string, Record<Locale, string>> = {
+  '땅콩':   { ko: '땅콩',   en: 'Peanuts' },
+  '견과류': { ko: '견과류', en: 'Tree Nuts' },
+  '계란':   { ko: '계란',   en: 'Eggs' },
+  '우유':   { ko: '우유',   en: 'Milk' },
+  '갑각류': { ko: '갑각류', en: 'Shellfish' },
+  '생선':   { ko: '생선',   en: 'Fish' },
+  '메밀':   { ko: '메밀',   en: 'Buckwheat' },
+  '복숭아': { ko: '복숭아', en: 'Peach' },
+};
+
+export const timeSlotLabels: Record<string, Record<Locale, string>> = {
+  morning:   { ko: '오전 (6시 ~ 12시)',  en: 'Morning (6am – 12pm)' },
+  afternoon: { ko: '오후 (12시 ~ 17시)', en: 'Afternoon (12pm – 5pm)' },
+  evening:   { ko: '저녁 (17시 ~ 20시)', en: 'Evening (5pm – 8pm)' },
+};

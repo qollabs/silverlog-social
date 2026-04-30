@@ -8,7 +8,7 @@ import { signAccessToken, signRefreshToken, TOKEN_TTL } from '@/lib/jwt';
 import { ACCESS_COOKIE, REFRESH_COOKIE } from '@/lib/auth';
 
 const Body = z.object({
-  phone: z.string().regex(/^01[016789]\d{7,8}$/),
+  phone: z.string().regex(/^(\+[1-9]\d{7,14}|01[016789]\d{7,8})$/),
   name: z.string().min(2).max(20),
   code: z.string().regex(/^\d{6}$/),
 });

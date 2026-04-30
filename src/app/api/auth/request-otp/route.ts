@@ -6,7 +6,7 @@ import { Otp } from '@/models/Otp';
 import { sendOtpSms } from '@/lib/sms';
 
 const Body = z.object({
-  phone: z.string().regex(/^01[016789]\d{7,8}$/, '올바른 전화번호를 입력해 주세요.'),
+  phone: z.string().regex(/^(\+[1-9]\d{7,14}|01[016789]\d{7,8})$/, '올바른 전화번호를 입력해 주세요.'),
 });
 
 export async function POST(req: NextRequest) {

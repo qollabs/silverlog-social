@@ -2,16 +2,18 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
-const TABS = [
-  { href: '/events', label: '행사', icon: '📅' },
-  { href: '/my-events', label: '내 일정', icon: '✓' },
-  { href: '/residents', label: '이웃', icon: '👥' },
-  { href: '/me', label: '내 정보', icon: '⚙️' },
-];
+import { useLocale } from '@/context/LocaleContext';
 
 export function BottomNav() {
   const pathname = usePathname();
+  const { t } = useLocale();
+
+  const TABS = [
+    { href: '/events',    label: t('nav_events'),      icon: '📅' },
+    { href: '/my-events', label: t('nav_my_schedule'), icon: '✓' },
+    { href: '/residents', label: t('nav_neighbors'),   icon: '👥' },
+    { href: '/me',        label: t('nav_my_info'),     icon: '⚙️' },
+  ];
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-surface border-t border-line z-40">

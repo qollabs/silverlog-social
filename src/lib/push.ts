@@ -1,5 +1,5 @@
-// FCM push notification helper.
-// Stub-friendly: if Firebase Admin env vars are missing, logs to console.
+// FCM push notification helper via Firebase Admin.
+// Stub-friendly: if Firebase env vars are missing, logs to console.
 
 import type { App } from 'firebase-admin/app';
 

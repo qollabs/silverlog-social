@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import { LocaleProvider } from '@/context/LocaleContext';
+import { LangToggle } from '@/components/LangToggle';
 
 export const metadata: Metadata = {
   title: '실버로그 — 함께하는 우리 이웃',
@@ -19,7 +21,12 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <LocaleProvider>
+          <LangToggle />
+          {children}
+        </LocaleProvider>
+      </body>
     </html>
   );
 }

@@ -13,7 +13,6 @@ import { sendPushToTokens } from '@/lib/push';
  * For 50 users this is trivially cheap; we'd batch + rate-limit at scale.
  */
 export async function GET(req: NextRequest) {
-  // Vercel Cron sends an Authorization header
   const authHeader = req.headers.get('authorization');
   if (process.env.CRON_SECRET && authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

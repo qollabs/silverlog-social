@@ -28,8 +28,7 @@ const UserSchema = new Schema(
       required: true,
       unique: true,
       index: true,
-      // KR phone format: digits only, e.g. "01012345678"
-      match: /^01[016789]\d{7,8}$/,
+      match: /^(\+[1-9]\d{7,14}|01[016789]\d{7,8})$/,
     },
     interests: { type: [InterestSchema], default: [] },
     allergies: { type: [AllergySchema], default: [] },

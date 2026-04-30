@@ -44,7 +44,6 @@ export async function POST(
       ),
     );
 
-    // Send personal invitation push to each invitee
     const invitees = await User.find({ _id: { $in: inviteeIds } })
       .select('fcmTokens')
       .lean();
