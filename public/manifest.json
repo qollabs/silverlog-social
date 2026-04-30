@@ -1,0 +1,11 @@
+{
+  "name": "실버로그 소셜",
+  "short_name": "실버로그",
+  "description": "시니어 입주민을 위한 소셜 행사 플랫폼",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF9F6",
+  "theme_color": "#0E5C3A",
+  "lang": "ko",
+  "icons": []
+}

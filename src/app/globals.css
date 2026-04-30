@@ -1,0 +1,126 @@
+/* Pretendard — primary Korean web font, optimized for legibility */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* GmarketSans — warm display font for headings */
+@font-face {
+  font-family: 'GmarketSansBold';
+  font-weight: 700;
+  font-style: normal;
+  src: url('/fonts/GmarketSansBold.woff') format('woff');
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    /* Prevent iOS auto-zoom on inputs (font-size >= 16px) */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: theme('colors.bg');
+    color: theme('colors.ink');
+    font-family: theme('fontFamily.sans');
+    font-feature-settings: 'ss10' on; /* Pretendard ss10 = improved hangul */
+    /* Critical for senior UX — base font size larger than typical */
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  /* Eliminate 300ms tap delay on Android WebView */
+  button, a, [role="button"] {
+    touch-action: manipulation;
+  }
+
+  /* Better tap feedback */
+  button:active, a:active, [role="button"]:active {
+    transform: scale(0.98);
+    transition: transform 0.05s ease-out;
+  }
+
+  /* Larger default focus rings for low-vision users */
+  *:focus-visible {
+    outline: 3px solid theme('colors.primary.DEFAULT');
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Prevent text selection on UI chrome but allow on content */
+  button, h1, h2, h3, nav {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
+
+@layer components {
+  /* Senior-friendly button — large, generous padding, strong contrast */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply min-h-touch px-6 py-4;
+    @apply rounded-2xl text-lg font-semibold;
+    @apply transition-colors;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-primary-ink;
+    @apply hover:bg-primary/90 active:bg-primary/80;
+  }
+  .btn-secondary {
+    @apply btn bg-white text-ink border-2 border-line;
+    @apply hover:bg-bg active:bg-line;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-ink;
+    @apply hover:bg-line/40;
+  }
+  .btn-danger {
+    @apply btn bg-danger text-white;
+    @apply hover:bg-danger/90;
+  }
+
+  /* Senior-friendly form input */
+  .input {
+    @apply w-full min-h-touch px-5 py-4;
+    @apply text-lg bg-white;
+    @apply rounded-xl border-2 border-line;
+    @apply focus:border-primary focus:outline-none;
+    @apply placeholder:text-muted/60;
+  }
+
+  /* Card surface */
+  .card {
+    @apply bg-surface rounded-2xl shadow-card;
+    @apply border border-line/60;
+  }
+
+  /* Tag chip */
+  .chip {
+    @apply inline-flex items-center px-3 py-1.5 rounded-full;
+    @apply text-sm font-medium;
+    @apply bg-line/40 text-muted;
+  }
+  .chip-primary {
+    @apply chip bg-primary/10 text-primary;
+  }
+  .chip-accent {
+    @apply chip bg-accent/10 text-accent;
+  }
+
+  /* Section headings */
+  .h-display {
+    @apply font-display text-3xl text-ink;
+  }
+  .h-section {
+    @apply text-xl font-bold text-ink;
+  }
+}
+
+/* Reduce motion if user prefers */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
