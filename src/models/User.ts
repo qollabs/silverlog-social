@@ -58,9 +58,9 @@ UserSchema.virtual('phoneLast4').get(function () {
 UserSchema.set('toJSON', {
   virtuals: true,
   transform: (_doc, ret) => {
-    delete ret.refreshTokenHash;
-    delete ret.refreshTokenExpiresAt;
-    delete ret.__v;
+    ret.refreshTokenHash = undefined;
+    ret.refreshTokenExpiresAt = undefined;
+    ret.__v = undefined;
     return ret;
   },
 });
